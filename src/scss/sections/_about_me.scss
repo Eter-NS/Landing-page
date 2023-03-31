@@ -1,0 +1,15 @@
+@use "../reset" as *;
+@use "../functions&mixins" as *;
+
+.about_me {
+  @include flexbox();
+  background-color: get-theme-var(third);
+  border-radius: $border-radius-size;
+  margin: 10vh auto;
+  width: 85%;
+  padding: 5%;
+
+  &__decoration_line {
+    display: none;
+  }
+}

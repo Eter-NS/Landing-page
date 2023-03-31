@@ -1,0 +1,24 @@
+@use "../../reset" as *;
+@use "../../typography" as *;
+@use "../../functions&mixins" as *;
+@use "../about_me" as *;
+
+@media screen and (min-width: $media-s) {
+  .about_me {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 3%;
+
+    @media screen and (min-width: $media-l) {
+      max-width: $maximum-width-of-a-section;
+    }
+
+    &__decoration_line {
+      display: block;
+      height: 10vmin;
+      width: 3px;
+      background-color: get-theme-var(font);
+      color: transparent;
+    }
+  }
+}

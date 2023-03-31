@@ -1,0 +1,45 @@
+@use "../../reset" as *;
+@use "../../typography" as *;
+@use "../../functions&mixins" as *;
+@use "../footer" as *;
+
+@media screen and (min-width: $media-s) {
+  .footer {
+    background-color: get-theme-var(background2);
+    padding: 5%;
+
+    &__container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 5%;
+
+      margin: clamp(0em, 6%, 2em) 0;
+    }
+
+    &__h3 {
+      font-size: 1.2em;
+    }
+
+    &__list {
+      margin: 0;
+      gap: 15%;
+    }
+
+    &__trademark {
+      font-size: 0.95em;
+    }
+  }
+}
+
+@media screen and (min-width: $media-m) {
+  .footer {
+    padding: 3% 10%;
+  }
+}
+
+@media screen and (min-width: $media-l) {
+  .footer {
+    padding: 1.5% 20%;
+  }
+}

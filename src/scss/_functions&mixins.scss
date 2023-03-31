@@ -1,0 +1,72 @@
+@use "sass:map";
+@use "sass:list";
+@use "sass:color";
+
+@function create-light-theme($start-theme) {
+  $finish-theme: ();
+
+  @each $key, $value in $start-theme {
+    $finish-theme: map.set(
+      $finish-theme,
+      $key,
+      if(
+        $key == "font",
+        color.adjust($value, $lightness: -70%),
+        if(
+          $key == "background" or $key == "background2",
+          color.adjust($value, $lightness: 80%),
+          /* default */ color.adjust($value, $lightness: 60%)
+        )
+      )
+    );
+  }
+  @return $finish-theme;
+}
+
+@mixin create-css-variables($map) {
+  @each $key, $value in $map {
+    --#{$key}: #{$value};
+  }
+}
+
+@function get-theme-var($name) {
+  @return var(--#{$name});
+}
+
+%flexbox_boilerplate {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5%;
+}
+
+@mixin flexbox() {
+  @extend %flexbox_boilerplate;
+
+  // any user changes
+  @content;
+}
+
+@mixin grid($col-template: null, $row-template: null, $area-template: null) {
+  display: grid;
+  gap: 5%;
+
+  @if ($col-template or $row-template) and $area-template {
+    @error "please choose if you want to use area template or col/row template";
+  }
+  @if $col-template {
+    grid-template-columns: $col-template;
+  }
+  @if $row-template {
+    grid-template-rows: $row-template;
+  }
+
+  @if $area-template {
+    grid-template-areas: $area-template;
+  }
+  grid-auto-columns: 1fr;
+
+  // any user changes
+  @content;
+}

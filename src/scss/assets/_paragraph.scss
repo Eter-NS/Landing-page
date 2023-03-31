@@ -1,0 +1,12 @@
+@use "../reset" as *;
+
+.paragraph {
+  font-size: 1.1em;
+
+  @media screen and (min-width: $media-s) {
+    font-size: 1.15em;
+  }
+  @media screen and (min-width: $media-m) {
+    font-size: 1.2em;
+  }
+}

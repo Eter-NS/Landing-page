@@ -1,0 +1,14 @@
+@use "../typography";
+@use "../reset" as *;
+
+.h2 {
+  font-size: 1.6em;
+  font-family: typography.$font-pacifico-regular;
+  font-weight: typography.$weight-400;
+  white-space: nowrap;
+  margin: 10px 0;
+
+  @media screen and (min-width: $media-s) {
+    font-size: 1.8em;
+  }
+}

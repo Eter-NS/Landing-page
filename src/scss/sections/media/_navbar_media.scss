@@ -1,0 +1,42 @@
+@use "../../reset" as *;
+@use "../../typography" as *;
+@use "../../functions&mixins" as *;
+@use "../navbar" as *;
+
+// $media-s
+.navbar {
+  @media screen and (min-width: $media-s) {
+    & > #navbar__hamburger_label {
+      display: none;
+    }
+
+    &__list {
+      position: initial;
+      transform: translateX(0);
+      background-color: inherit;
+      z-index: inherit;
+      padding: 0;
+      width: 40%;
+      height: auto;
+      box-shadow: none;
+
+      flex-direction: row;
+      justify-content: end;
+      column-gap: 10%;
+
+      &[aria-expanded="true"],
+      &[aria-expanded="false"] {
+        transition: none;
+      }
+
+      & li {
+        white-space: nowrap;
+        font-size: 1.4em;
+      }
+
+      &_icons {
+        display: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+.navbar {
+  transition: transform 300ms ease;
+}
+.navbar.fade-out {
+  transform: translateY(-100%);
+}

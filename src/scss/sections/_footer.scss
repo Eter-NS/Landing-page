@@ -1,0 +1,54 @@
+@use "../reset" as *;
+@use "../functions&mixins" as *;
+@use "../typography";
+
+/* . - empty space */
+$template: "github instagram discord";
+
+.footer {
+  background-color: get-theme-var(background2);
+  padding: 5%;
+
+  &__container {
+    margin: 10% 0;
+  }
+
+  &__h3 {
+    text-align: center;
+    font-size: 1em;
+  }
+
+  &__list {
+    @include grid($area-template: $template);
+
+    margin: 5% 0;
+  }
+
+  &__list_element {
+    justify-self: center;
+    width: 50px;
+    list-style: none;
+    text-align: center;
+
+    &:nth-child(1) {
+      grid-area: github;
+    }
+
+    &:nth-child(2) {
+      grid-area: instagram;
+    }
+
+    &:nth-child(3) {
+      grid-area: discord;
+    }
+  }
+
+  &__trademark {
+    text-align: center;
+    font-size: 0.8em;
+  }
+
+  &__icon {
+    fill: get-theme-var(font);
+  }
+}

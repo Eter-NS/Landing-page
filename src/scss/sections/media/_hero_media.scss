@@ -1,0 +1,58 @@
+@use "../../reset" as *;
+@use "../../typography" as *;
+@use "../../functions&mixins" as *;
+@use "../hero" as *;
+
+@media screen and (min-width: $media-s) {
+  .hero {
+    &__img {
+      margin-right: 5%;
+      background-image: url("../../../assets/profile_desktop.jpg");
+    }
+
+    &__container {
+      bottom: 50px;
+      max-height: 50%;
+      width: clamp(10rem, 60%, 30rem);
+    }
+
+    &__h1 {
+      font-size: 2.1em;
+    }
+  }
+}
+
+@media screen and (min-width: $media-m) {
+  .hero {
+    padding-inline: 10vw;
+    &__img {
+      max-height: 60vw;
+    }
+
+    &__container {
+      margin-left: 5%;
+    }
+
+    &__h1 {
+      font-size: 2.4em;
+    }
+  }
+}
+
+@media screen and (min-width: $media-l) {
+  .hero {
+    &__img {
+      max-height: 50vw;
+    }
+
+    &__container {
+      bottom: 50%;
+      transform: translateY(50%);
+      margin-left: 5%;
+    }
+
+    &__h1 {
+      font-size: 2.7em;
+    }
+  }
+}

@@ -1,0 +1,62 @@
+@use "../../reset" as *;
+@use "../../typography" as *;
+@use "../../functions&mixins" as *;
+@use "../contact" as *;
+
+$input-height: 1em;
+$padding: 3%;
+
+@media screen and (min-width: $media-s) {
+  .contact {
+    & > h2 {
+      text-align: center;
+    }
+
+    &__input {
+      & * {
+        padding: 0;
+        width: 90%;
+      }
+
+      & > label {
+        margin-bottom: $padding;
+      }
+
+      & input,
+      & textarea {
+        height: $input-height * 2;
+        font-size: 1em;
+        padding: $padding;
+      }
+
+      & > textarea {
+        height: $input-height * 10;
+      }
+    }
+
+    &__send_button {
+      padding: $padding;
+    }
+  }
+}
+
+@media screen and (min-width: $media-m) {
+  .contact {
+    flex-direction: row;
+    justify-content: space-between;
+
+    & > form {
+      flex-basis: 60%;
+    }
+
+    & > h2 {
+      align-self: center;
+    }
+  }
+}
+
+@media screen and (min-width: $media-l) {
+  .contact {
+    max-width: $maximum-width-of-a-section;
+  }
+}

@@ -1,0 +1,60 @@
+@use "./functions&mixins" as *;
+@use "./typography" as *;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: $font-lato-regular;
+  font-weight: $weight-400;
+  letter-spacing: 0.75px;
+}
+
+// variables
+$border-radius-size: 20px;
+$maximum-width-of-a-section: 60vw;
+
+// media queries
+$media-s: 550px;
+$media-m: 720px;
+$media-l: 1000px;
+
+// navbar/logo sizes
+$logo-font-size: 1.5em;
+$navbar-height: $logo-font-size * 2.75;
+
+// anim speed
+$seconds-per-viewport: calc(1s / 80vw);
+
+// colors - dark theme default
+$theme: (
+  "third": hsl(71, 50%, 30%),
+  "fourth": hsl(101, 40%, 20%),
+  "fifth": hsl(92, 25%, 30%),
+  "font": hsl(0, 0%, 85%),
+  "background": hsl(0, 0%, 15%),
+  "background2": hsl(0, 0%, 10%),
+);
+
+// Writing css variables for theming
+:root {
+  // imports dark theme
+  @include create-css-variables($theme);
+
+  // imports light-theme
+  @media (prefers-color-scheme: light) {
+    $theme: create-light-theme($theme);
+    @include create-css-variables($theme);
+  }
+}
+
+// applying boilerplate color theming
+body {
+  background-color: get-theme-var(background);
+  color: get-theme-var(font);
+  overflow-x: hidden;
+}
+
+*:any-link {
+  color: get-theme-var(font);
+}

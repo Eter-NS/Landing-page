@@ -1,0 +1,233 @@
+@use "../reset" as *;
+@use "../typography" as *;
+@use "../functions&mixins" as *;
+
+// variables
+$hamburger-width: $logo-font-size * 1.5;
+
+.navbar {
+  @include flexbox() {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  position: fixed;
+  background-color: get-theme-var(background);
+  padding: 0 5vmin;
+  width: 100%;
+  height: $navbar-height;
+  z-index: 10;
+
+  &__logo {
+    margin: 10px 0 0;
+
+    font-size: $logo-font-size;
+    font-weight: 400;
+    font-family: $font-pacifico-regular;
+
+    & span {
+      display: block;
+      transform: translateX(15%);
+      font-family: $font-pacifico-regular;
+    }
+  }
+
+  & > #navbar__hamburger_label {
+    width: $hamburger-width;
+    height: $hamburger-width;
+    background-color: transparent;
+    cursor: pointer;
+    z-index: 12;
+    @include flexbox() {
+      justify-content: start;
+    }
+  }
+
+  %hamburger {
+    width: $hamburger-width;
+    height: calc($hamburger-width / 6.5);
+    border: none;
+    cursor: pointer;
+    display: block;
+    background-color: get-theme-var(font);
+    z-index: 12;
+  }
+
+  &__hamburger {
+    @extend %hamburger;
+    position: relative;
+    top: 25%;
+
+    &::before,
+    &::after {
+      @extend %hamburger;
+      content: "";
+      position: absolute;
+      top: 0%;
+      left: 0%;
+    }
+
+    &::before {
+      transform: translateY(200%);
+    }
+    &::after {
+      transform: translateY(400%);
+    }
+  }
+
+  &__list {
+    $list-width: 75vw;
+
+    z-index: 11;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background-color: get-theme-var(background2);
+    width: $list-width;
+    height: 100%;
+    padding: 25% 0;
+    @include flexbox() {
+      justify-content: space-evenly;
+    }
+    list-style: none;
+    box-shadow: inset 0 0 30px hsla(0, 0%, 0%, 0.1);
+    transform: translateX(100%);
+
+    & li {
+      font-size: 2em;
+      text-align: center;
+
+      &:first-child {
+        margin-top: 0;
+      }
+
+      & a {
+        cursor: pointer;
+        text-decoration: none;
+      }
+    }
+
+    &_icons {
+      margin-bottom: 0;
+    }
+
+    &[aria-expanded="true"],
+    &[aria-expanded="false"] {
+      transition: transform $list-width * $seconds-per-viewport ease-in;
+    }
+
+    &[aria-expanded="true"] {
+      transform: translateX(0);
+
+      & + #navbar__hamburger_label > .navbar__hamburger {
+        animation: turnIntoX__hamburger $list-width * $seconds-per-viewport ease
+          0ms 1 normal forwards;
+
+        &::before {
+          animation: turnIntoX__before $list-width * $seconds-per-viewport ease
+            0ms 1 normal forwards;
+        }
+        &::after {
+          animation: turnIntoX__after $list-width * $seconds-per-viewport ease
+            0ms 1 normal forwards;
+        }
+      }
+    }
+
+    &[aria-expanded="false"] {
+      & + #navbar__hamburger_label > .navbar__hamburger {
+        animation: returnFromX__hamburger $list-width * $seconds-per-viewport
+          ease 0ms 1 normal forwards;
+
+        &::before {
+          animation: returnFromX__before $list-width * $seconds-per-viewport
+            ease 0ms 1 normal forwards;
+        }
+        &::after {
+          animation: returnFromX__after $list-width * $seconds-per-viewport ease
+            0ms 1 normal forwards;
+        }
+      }
+    }
+  }
+}
+
+@keyframes turnIntoX__hamburger {
+  0% {
+    transform: rotate(0deg) translateY(0%);
+  }
+
+  50% {
+    transform: rotate(0deg) translateY(100%);
+  }
+
+  100% {
+    transform: translateX(20%) rotate(45deg) translateY(100%);
+  }
+}
+@keyframes returnFromX__hamburger {
+  0% {
+    transform: translateX(20%) rotate(45deg) translateY(100%);
+  }
+
+  50% {
+    transform: rotate(0deg) translateY(100%);
+  }
+
+  100% {
+    transform: rotate(0deg) translateY(0%);
+  }
+}
+
+@keyframes turnIntoX__before {
+  0% {
+    transform: translateX(0) translateY(200%);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(1000%) translateY(200%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(1000%) translateY(200%);
+  }
+}
+@keyframes returnFromX__before {
+  0% {
+    opacity: 0;
+    transform: translateX(1000%) translateY(200%);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateX(1000%) translateY(200%);
+  }
+
+  100% {
+    transform: translateX(0) translateY(200%);
+  }
+}
+
+@keyframes turnIntoX__after {
+  0% {
+    transform: rotate(0deg) translateY(400%);
+  }
+  50% {
+    transform: rotate(0deg) translateY(200%);
+  }
+  100% {
+    transform: rotate(-90deg);
+  }
+}
+@keyframes returnFromX__after {
+  0% {
+    transform: rotate(90deg);
+  }
+
+  50% {
+    transform: rotate(0deg) translateY(200%);
+  }
+
+  100% {
+    transform: rotate(0deg) translateY(400%);
+  }
+}
