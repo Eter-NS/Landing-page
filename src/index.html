@@ -61,21 +61,36 @@
           <label for="emailInput"> Your e-mail </label>
           <input
             type="email"
-            name=""
             id="emailInput"
             placeholder="example@example.domain"
             autocomplete="email"
+            required
+            pattern="^[\w\d\.]+@[\w\d]+\.[\w]{2,3}$"
           />
         </fieldset>
 
         <fieldset class="contact__input">
           <label for="topicInput"> Topic </label>
-          <input type="text" name="" id="topicInput" placeholder="" />
+          <input
+            type="text"
+            id="topicInput"
+            placeholder=""
+            autocomplete="off"
+            pattern="^[^<>]*$"
+            required
+          />
         </fieldset>
 
         <fieldset class="contact__input">
           <label for="messageInput">Message</label>
-          <textarea name="" id="messageInput" cols="30" rows="10"></textarea>
+          <textarea
+            id="messageInput"
+            cols="30"
+            rows="10"
+            autocomplete="off"
+            pattern="^[^<>]*$"
+            required
+          ></textarea>
         </fieldset>
 
         <button type="submit" class="contact__send_button">Send me!</button>
