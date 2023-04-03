@@ -28,12 +28,12 @@ $seconds-per-viewport: calc(1s / 80vw);
 
 // colors - dark theme default
 $theme: (
-  "third": hsl(71, 50%, 30%),
-  "fourth": hsl(101, 40%, 20%),
-  "fifth": hsl(92, 25%, 30%),
-  "font": hsl(0, 0%, 85%),
-  "background": hsl(0, 0%, 15%),
-  "background2": hsl(0, 0%, 10%),
+  "third": #657326,
+  "fourth": #2c471f,
+  "fifth": #4b6039,
+  "font": #d9d9d9,
+  "background": #262626,
+  "background2": #1a1a1a,
 );
 
 // Writing css variables for theming

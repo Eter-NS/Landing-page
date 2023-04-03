@@ -56,5 +56,18 @@ $padding: 5%;
     padding: $padding;
     font-family: $font-pacifico-regular;
     font-size: 1.2em;
+    cursor: pointer;
+  }
+
+  &__p {
+    margin: 2%;
+    align-self: center;
+
+    &:first-of-type {
+      margin-top: 5%;
+    }
+    &:last-of-type {
+      margin-bottom: 5%;
+    }
   }
 }
